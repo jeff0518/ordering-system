@@ -1,0 +1,11 @@
+@mixin text-styles($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin center-both {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
