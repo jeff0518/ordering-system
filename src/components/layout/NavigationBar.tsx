@@ -10,15 +10,19 @@ import style from "./NavigationBar.module.scss";
 function NavigationBar() {
   return (
     <nav className={style.navigationBar_container}>
-      <ButtonUI btnStyle="btn__link">
-        <RiTranslate size={40} />
-      </ButtonUI>
-      <ButtonUI btnStyle="btn__link">
-        <RiAccountCircleFill size={40} />
-      </ButtonUI>
-      <ButtonUI btnStyle="btn__link">
-        <RiShoppingCart2Line size={40} />
-      </ButtonUI>
+      <div className={style.other}>
+        <ButtonUI btnStyle="btn__link">
+          <RiTranslate size={30} />
+        </ButtonUI>
+        <ButtonUI btnStyle="btn__link">
+          <RiAccountCircleFill size={30} />
+        </ButtonUI>
+      </div>
+      <div className={style.shoppingCar}>
+        <ButtonUI btnStyle="btn__link">
+          <RiShoppingCart2Line size={30} />
+        </ButtonUI>
+      </div>
     </nav>
   );
 }

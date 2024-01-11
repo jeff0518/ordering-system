@@ -2,7 +2,45 @@
 @import "/src//styles/mixin";
 
 .navigationBar_container {
-  width: 100%;
-  display: flex;
-  gap: 0.5rem;
+  .other {
+    width: 6rem;
+    height: 2rem;
+    border-radius: 30px;
+    position: fixed;
+    top: 1.5rem;
+    right: 0.5rem;
+    background-color: color.$gray-7;
+    z-index: 10;
+    @include center-both;
+  }
+
+  .shoppingCar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    object-fit: contain;
+    background-color: color.$gray-7;
+    z-index: 10;
+    @include center-both;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navigationBar_container {
+    .shoppingCar {
+      all: unset;
+    }
+
+    .other {
+      all: unset;
+      display: flex;
+      gap: 0.5rem;
+    }
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+  }
 }
