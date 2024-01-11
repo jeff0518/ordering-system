@@ -1,0 +1,8 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.navigationBar_container {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}

@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import style from "./ButtonUI.module.scss";
 
 interface ButtonUIProps {
-  children: string;
+  children: ReactNode;
   btnStyle: string;
 }
 
