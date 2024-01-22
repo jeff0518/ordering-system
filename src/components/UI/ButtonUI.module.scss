@@ -16,6 +16,23 @@
   }
 }
 
+.btn__pill__mealItem {
+  width: 50%;
+  height: 2rem;
+  margin: 0 auto;
+  @include center-both;
+  border: none;
+  border-radius: 50px;
+  @include text-styles(1rem, 500, color.$gray-10);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: color.$brand-color;
+    @include text-styles(1rem, 500, color.$secondary-color);
+  }
+}
+
 .btn__link {
   margin-top: 0.5rem;
   @include center-both;

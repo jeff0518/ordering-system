@@ -1,0 +1,51 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.mealItem_container {
+  background-color: color.$gray-10;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+
+  .article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    img {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+    }
+    .infoBox {
+      width: 100%;
+      height: 100%;
+      color: color.$gray-2;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0.75rem 0;
+      }
+
+      .selling {
+        display: inline-block;
+        background-color: #312c1d;
+        color: #ffc404;
+        font-size: 0.9rem;
+        font-weight: bold;
+        padding: 0.5rem 2rem;
+        margin: 0;
+        border-radius: 4px;
+      }
+
+      .place {
+        margin: 1rem;
+      }
+    }
+
+    .actions {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

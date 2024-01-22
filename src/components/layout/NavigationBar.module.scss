@@ -24,7 +24,9 @@
     object-fit: contain;
     background-color: color.$gray-7;
     z-index: 10;
-    @include center-both;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 }
 
