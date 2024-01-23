@@ -10,7 +10,8 @@
   border-radius: 50px;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: color.$brand-color;
     color: color.$assistant-gray-color;
   }
@@ -26,10 +27,40 @@
   @include text-styles(1rem, 500, color.$gray-10);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     transform: scale(1.2);
     background-color: color.$brand-color;
     @include text-styles(1rem, 500, color.$secondary-color);
+  }
+}
+
+.btn__cart {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid color.$secondary-color;
+  border-radius: 4px;
+  background-color: color.$secondary-color;
+  @include text-styles(1rem, 500, color.$gray-10);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    transform: scale(1.2);
+    background-color: color.$warning-color;
+    border-color: color.$warning-color;
+  }
+}
+
+.btn__text {
+  background-color: transparent;
+  border: none;
+  @include text-styles(1rem, 500, color.$gray-10);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    transform: scale(1.2);
+    color: color.$error-color;
   }
 }
 
@@ -41,7 +72,8 @@
   border: none;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     transform: scale(1.1);
     color: color.$secondary-color;
   }

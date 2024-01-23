@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import MealItem from "./MealItem";
 import { getMeals } from "../../services/getMealsAPI";
-import { MenuProps } from "../../utils/Type";
+import { MenuProps } from "../../utils/type";
 import style from "./Meals.module.scss";
 
 function Meals() {
@@ -11,7 +11,6 @@ function Meals() {
   async function fetchMeals() {
     try {
       const response = await getMeals();
-      console.log(response);
       if (response) {
         setLoadedMeals(response.data.data);
       }
