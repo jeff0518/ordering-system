@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import CartContext from "../../context/CartContext";
 import UserProgressContext from "../../context/UserProgressContext.";
+import CartItem from "./CartItem";
 import ButtonUI from "../UI/ButtonUI";
 import Modal from "../UI/Modal";
 
@@ -15,6 +16,10 @@ function Cart() {
     0
   );
 
+  function showSendOutHandler() {
+    userProgressCtx.showSendOut();
+  }
+
   function closeCartHandler() {
     userProgressCtx.hideCart();
   }
@@ -24,9 +29,14 @@ function Cart() {
       <h2>購物車</h2>
       <ul>
         {cartCtx?.items.map((item) => (
-          <li key={item.productId}>
-            {item.name} - {item.quantity} 份
-          </li>
+          <CartItem
+            key={item.productId}
+            name={item.name}
+            selling={item.selling}
+            quantity={item.quantity}
+            onAdd={() => cartCtx.addItem(item)}
+            onRemove={() => cartCtx.removeItem(item.productId)}
+          />
         ))}
       </ul>
       <p className="cart_total">$ {cartTotal}</p>
@@ -34,7 +44,11 @@ function Cart() {
         <ButtonUI btnStyle="btn__text" onClick={closeCartHandler}>
           關閉
         </ButtonUI>
-        <ButtonUI btnStyle="btn__cart">結帳</ButtonUI>
+        {cartCtx?.items.length !== 0 && (
+          <ButtonUI btnStyle="btn__cart" onClick={showSendOutHandler}>
+            送出
+          </ButtonUI>
+        )}
       </div>
     </Modal>
   );

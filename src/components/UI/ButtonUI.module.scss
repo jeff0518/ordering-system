@@ -46,8 +46,8 @@
   &:hover,
   &:active {
     transform: scale(1.2);
-    background-color: color.$warning-color;
-    border-color: color.$warning-color;
+    background-color: color.$success-color;
+    border-color: color.$success-color;
   }
 }
 
@@ -61,6 +61,22 @@
   &:active {
     transform: scale(1.2);
     color: color.$error-color;
+  }
+}
+
+.btn__round__small {
+  width: 1.5rem;
+  height: 1.5rem;
+  @include center-both;
+  border-radius: 50%;
+  border: none;
+  background-color: color.$secondary-color;
+  @include text-styles(1rem, 700, color.$gray-10);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: color.$success-color;
   }
 }
 

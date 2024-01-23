@@ -42,6 +42,44 @@
   }
 }
 
+.sendOut {
+  h2,
+  li,
+  p {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0.5rem 0;
+    padding: 0;
+  }
+
+  li {
+    // display: flex;
+    // justify-content: center;
+    // margin: 2rem 0;
+    @include text-styles(1rem, 400, color.$gray-8);
+  }
+
+  p {
+    // display: flex;
+    // justify-content: center;
+    // margin: 2rem 0;
+    background-color: #312c1d;
+    border-radius: 4px;
+    @include text-styles(1.25rem, 500, #ffc404);
+  }
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+
 @keyframes fade-slide-up {
   from {
     opacity: 0;

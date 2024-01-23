@@ -1,0 +1,19 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.cartItem_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+
+  p {
+    margin: 0;
+  }
+
+  &_actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
