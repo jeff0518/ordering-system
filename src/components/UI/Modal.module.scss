@@ -58,16 +58,10 @@
   }
 
   li {
-    // display: flex;
-    // justify-content: center;
-    // margin: 2rem 0;
     @include text-styles(1rem, 400, color.$gray-8);
   }
 
   p {
-    // display: flex;
-    // justify-content: center;
-    // margin: 2rem 0;
     background-color: #312c1d;
     border-radius: 4px;
     @include text-styles(1.25rem, 500, #ffc404);

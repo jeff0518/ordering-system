@@ -1,0 +1,19 @@
+@use "/src/styles/colors" as color;
+@import "/src/styles/mixin";
+
+.form {
+  width: 100%;
+  max-width: 40rem;
+  padding: 1rem;
+  background-color: #e4ddd4;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.search {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}

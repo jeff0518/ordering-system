@@ -1,0 +1,11 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.searchForm_input {
+  width: 70%;
+}
+
+.searchForm_bnt {
+  width: 30%;
+  margin-right: 0.5rem;
+}

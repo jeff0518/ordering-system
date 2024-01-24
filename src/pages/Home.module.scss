@@ -1,0 +1,13 @@
+@use "/src/styles/colors" as color;
+@import "/src/styles/mixin";
+
+.home_container {
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem 10%;
+
+  .form {
+    width: 100%;
+    margin-top: 25%;
+  }
+}

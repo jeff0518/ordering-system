@@ -1,0 +1,21 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.logo_container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid color.$brand-color;
+  }
+
+  h1 {
+    @include text-styles(2rem, 500, color.$brand-color);
+  }
+}
