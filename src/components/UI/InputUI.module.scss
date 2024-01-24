@@ -1,6 +1,12 @@
 @use "/src/styles/colors" as color;
 @import "/src/styles/mixin";
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .input_search {
   display: flex;
   align-items: center;
@@ -22,7 +28,6 @@
     text-align: left;
   }
 }
-
 
 .input_modal {
   width: 100%;

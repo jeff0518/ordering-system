@@ -10,7 +10,7 @@ export const Toast = Swal.mixin({
 
 export const Alert = Swal.mixin({
   showConfirmButton: false,
-  width: 1200,
+  width: 600,
   timer: 3000,
 });
 
