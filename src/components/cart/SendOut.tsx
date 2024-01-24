@@ -4,17 +4,39 @@ import Modal from "../UI/Modal";
 import ButtonUI from "../UI/ButtonUI";
 import CartContext from "../../context/CartContext";
 import UserProgressContext from "../../context/UserProgressContext.";
+// import { CartDataProps } from "../../utils/type";
+// import { patchCart } from "../../services/tableAPI";
 import { Toast } from "../../utils/getSweetalert";
 
 function SendOut() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+  // const [newCartData, setNewCartData] = useState<CartDataProps>(defaultData);
 
   const cartTotal = cartCtx?.items.reduce(
     (totalPrice, item) =>
       totalPrice + (item.quantity ? +item.quantity : 0) * +item.selling,
     0
   );
+
+  const tableId = localStorage.getItem("tableId");
+
+  const tableData = {
+    tableId: tableId,
+    shoppingCar: cartCtx?.items,
+    totalAmount: cartTotal,
+  };
+
+  console.log(tableData);
+
+  // const uploadData = async () => {
+  //   try {
+  //     await patchCart();
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw new Error("資料上傳失敗");
+  //   }
+  // };
 
   function submitHandler() {
     Toast.fire({

@@ -6,3 +6,16 @@ export interface MenuProps {
   imageUrl: string;
   isActive: boolean;
 }
+
+export interface CartDataProps {
+  tableId: string;
+  shoppingCar: [
+    {
+      productId: string;
+      name: string;
+      quantity: number;
+      selling: string;
+    }
+  ];
+  totalAmount: number;
+}

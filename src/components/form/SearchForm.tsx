@@ -1,10 +1,11 @@
-import { FormEvent } from "react";
+import { FormEvent, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Form from "../UI/Form";
 import InputUI from "../UI/InputUI";
 import ButtonUI from "../UI/ButtonUI";
-import { Alert } from "../../utils/getSweetalert";
+import Loading from "../error/Loading";
+import { Alert, Dialog } from "../../utils/getSweetalert";
 import { searchTable } from "../../services/tableAPI";
 import style from "./SearchForm.module.scss";
 
@@ -14,14 +15,19 @@ interface SearchTableProps {
 
 function SearchForm() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigateCallback = useCallback(navigate, [navigate]);
 
   const uploadData = async (tableData: SearchTableProps) => {
-    console.log("uploadData:", tableData);
     const { tableId } = tableData;
     try {
       await searchTable(tableId);
+      localStorage.setItem("tableId", tableId);
+      setIsLoading(false);
+      navigate("/main");
     } catch (error) {
       console.log(error);
+      throw new Error("資料上傳失敗");
     }
   };
 
@@ -40,12 +46,36 @@ function SearchForm() {
     }
     const tableData = { tableId: `${tableId}桌` };
     // const tableData = Object.fromEntries(fd.entries()); 由於資料庫的值有桌這個字，因此這段不適用。
+    setIsLoading(true);
     uploadData(tableData);
-    navigate("/main");
   }
 
+  useEffect(() => {
+    const storedTableId = localStorage.getItem("tableId");
+    console.log(storedTableId);
+
+    if (!storedTableId) return;
+
+    Dialog.fire({
+      title: `已經在 ${storedTableId} 點過餐`,
+      icon: "warning",
+      confirmButtonText: `回到 ${storedTableId}`,
+      showCancelButton: true,
+      cancelButtonText: "重新輸入桌號",
+    }).then((result) => {
+      if (result.isConfirmed === undefined) return;
+
+      if (result.isConfirmed) {
+        navigateCallback("/main");
+      } else {
+        localStorage.removeItem("tableId");
+        navigateCallback("/");
+      }
+    });
+  }, [navigateCallback]);
   return (
     <Form className="search" onSubmit={onSubmitHandler}>
+      {isLoading && <Loading />}
       <div className={style.searchForm_input}>
         <InputUI
           label="桌號"
