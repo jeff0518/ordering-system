@@ -1,4 +1,5 @@
 import { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Form from "../UI/Form";
 import InputUI from "../UI/InputUI";
@@ -7,8 +8,11 @@ import ButtonUI from "../UI/ButtonUI";
 import style from "./SearchForm.module.scss";
 
 function SearchForm() {
+  const navigate = useNavigate();
   function onSubmitHandler(event: FormEvent) {
     event.preventDefault();
+
+    navigate("/main");
   }
 
   return (
