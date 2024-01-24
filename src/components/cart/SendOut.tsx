@@ -24,12 +24,21 @@ function SendOut() {
     userProgressCtx.hideSendOut();
   }
 
+  function goToCartHandler() {
+    userProgressCtx.showCart();
+  }
   function closeSendOutHandler() {
     userProgressCtx.hideSendOut();
   }
 
   return (
-    <Modal className="sendOut" open={userProgressCtx.progress === "sendOut"}>
+    <Modal
+      className="sendOut"
+      open={userProgressCtx.progress === "sendOut"}
+      onClose={
+        userProgressCtx.progress === "sendOut" ? closeSendOutHandler : () => {}
+      }
+    >
       <h2>確定要送出以下餐點？</h2>
       <ul>
         {cartCtx?.items.map((item) => (
@@ -40,7 +49,7 @@ function SendOut() {
       </ul>
       <p className="cart_total">總金額：$ {cartTotal}</p>
       <div className="modal_actions">
-        <ButtonUI btnStyle="btn__text" onClick={closeSendOutHandler}>
+        <ButtonUI btnStyle="btn__text" onClick={goToCartHandler}>
           再考慮一下
         </ButtonUI>
         <ButtonUI btnStyle="btn__cart" onClick={submitHandler}>

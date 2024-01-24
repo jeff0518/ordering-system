@@ -9,7 +9,6 @@ import style from "./Meals.module.scss";
 function Meals() {
   const [loadedMeals, setLoadedMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(isLoading);
   async function fetchMeals() {
     try {
       const response = await getMeals();

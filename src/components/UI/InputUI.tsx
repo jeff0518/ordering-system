@@ -12,7 +12,7 @@ function InputUI({ label, id, type, placeholder, inputStyle }: InputUIProps) {
   return (
     <div className={style[inputStyle]}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} type={type} placeholder={placeholder} />
+      <input id={id} name={id} type={type} placeholder={placeholder} required />
     </div>
   );
 }

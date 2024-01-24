@@ -20,8 +20,8 @@ function SearchForm() {
       <div className={style.searchForm_input}>
         <InputUI
           label="桌號"
-          id="search"
-          type="test"
+          id="table"
+          type="text"
           placeholder="請輸入桌號"
           inputStyle="input_search"
         />

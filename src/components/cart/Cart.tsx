@@ -25,7 +25,13 @@ function Cart() {
   }
 
   return (
-    <Modal className="cart" open={userProgressCtx.progress === "cart"}>
+    <Modal
+      className="cart"
+      open={userProgressCtx.progress === "cart"}
+      onClose={
+        userProgressCtx.progress === "cart" ? closeCartHandler : () => {}
+      }
+    >
       <h2>購物車</h2>
       <ul>
         {cartCtx?.items.map((item) => (
