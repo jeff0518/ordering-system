@@ -23,15 +23,15 @@ function NavigationBar() {
   return (
     <nav className={style.navigationBar_container}>
       <div className={style.other}>
-        <ButtonUI btnStyle="btn__link">
+        <ButtonUI btnStyle="btn__icon">
           <RiTranslate size={30} />
         </ButtonUI>
-        <ButtonUI btnStyle="btn__link">
+        <ButtonUI btnStyle="btn__icon">
           <RiAccountCircleFill size={30} />
         </ButtonUI>
       </div>
       <div className={style.shoppingCar}>
-        <ButtonUI btnStyle="btn__link" onClick={showCartHandler}>
+        <ButtonUI btnStyle="btn__icon" onClick={showCartHandler}>
           {isCart ? (
             <MdAddShoppingCart size={30} />
           ) : (

@@ -9,7 +9,7 @@
     position: fixed;
     top: 1.5rem;
     right: 0.5rem;
-    background-color: color.$gray-7;
+    background-color: color.$gray-5;
     z-index: 10;
     @include center-both;
   }
@@ -22,11 +22,9 @@
     bottom: 3rem;
     right: 2rem;
     object-fit: contain;
-    background-color: color.$gray-7;
+    background-color: color.$gray-5;
     z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    @include center-both;
   }
 }
 

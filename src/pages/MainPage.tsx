@@ -5,7 +5,7 @@ import Meals from "../components/meals/Meals";
 import Cart from "../components/cart/Cart";
 import SendOut from "../components/cart/SendOut";
 
-function Main() {
+function MainPage() {
   return (
     <UserProgressContextProvider>
       <CartContextProvider>
@@ -17,4 +17,4 @@ function Main() {
     </UserProgressContextProvider>
   );
 }
-export default Main;
+export default MainPage;

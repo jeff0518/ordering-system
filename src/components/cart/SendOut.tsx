@@ -21,6 +21,7 @@ function SendOut() {
       icon: "success",
       title: "已送出!",
     });
+    userProgressCtx.hideSendOut();
   }
 
   function closeSendOutHandler() {

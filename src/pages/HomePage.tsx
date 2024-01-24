@@ -1,8 +1,8 @@
 import Logo from "../components/layout/Logo";
 import SearchForm from "../components/form/SearchForm";
-import style from "./Home.module.scss";
+import style from "./HomePage.module.scss";
 
-function Home() {
+function HomePage() {
   return (
     <div className={style.home_container}>
       <Logo />
@@ -12,4 +12,4 @@ function Home() {
     </div>
   );
 }
-export default Home;
+export default HomePage;

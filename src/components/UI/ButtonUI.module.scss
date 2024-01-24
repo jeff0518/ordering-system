@@ -80,10 +80,9 @@
   }
 }
 
-.btn__link {
-  margin-top: 0.5rem;
+.btn__icon {
   @include center-both;
-  @include text-styles(1.5rem, 400, color.$brand-color);
+  @include text-styles(1.25rem, 700, color.$brand-color);
   background-color: unset;
   border: none;
   cursor: pointer;
@@ -92,5 +91,20 @@
   &:active {
     transform: scale(1.1);
     color: color.$secondary-color;
+  }
+}
+
+.btn__link {
+  margin-top: 2rem;
+  @include center-both;
+  @include text-styles(1.25rem, 700, color.$assistant-gray-color);
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    transform: scale(1.1);
+    color: color.$error-color;
   }
 }

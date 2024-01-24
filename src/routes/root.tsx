@@ -1,14 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
-import Home from "../pages/Home";
-import Main from "../pages/Main";
+import HomePage from "../pages/HomePage";
+import MainPage from "../pages/MainPage";
+import ErrorPage from "../pages/ErrorPage";
 
 function Root() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/main" element={<Main />} />
-      <Route path="*" element={<Home />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/main" element={<MainPage />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 }
