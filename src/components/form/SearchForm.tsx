@@ -1,5 +1,6 @@
 import { FormEvent, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import Form from "../UI/Form";
 import InputUI from "../UI/InputUI";
@@ -17,6 +18,7 @@ function SearchForm() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const navigateCallback = useCallback(navigate, [navigate]);
+  const { t } = useTranslation();
 
   const uploadData = async (tableData: SearchTableProps) => {
     const { tableId } = tableData;
@@ -27,7 +29,7 @@ function SearchForm() {
       navigate("/main");
     } catch (error) {
       console.log(error);
-      throw new Error("資料上傳失敗");
+      throw new Error(`${t("messages.Upload data failed")}`);
     }
   };
 
@@ -39,7 +41,7 @@ function SearchForm() {
     const tableId = fd.get("tableId");
     if (!tableId || tableId.toString().length > 2) {
       Alert.fire({
-        title: "您輸入的桌號有誤！",
+        title: `${t("messages.tableIncorrect")}`,
         icon: "error",
       });
       return;
@@ -57,11 +59,15 @@ function SearchForm() {
     if (!storedTableId) return;
 
     Dialog.fire({
-      title: `已經在 ${storedTableId} 點過餐`,
+      title: `${t("messages.alreadyOrder", {
+        storedTableId: `${storedTableId}`,
+      })}`,
       icon: "warning",
-      confirmButtonText: `回到 ${storedTableId}`,
+      confirmButtonText: `${t("messages.return", {
+        storedTableId: `${storedTableId}`,
+      })}`,
       showCancelButton: true,
-      cancelButtonText: "重新輸入桌號",
+      cancelButtonText: `${t("messages.again")}`,
     }).then((result) => {
       if (result.isConfirmed === undefined) return;
 
@@ -69,24 +75,25 @@ function SearchForm() {
         navigateCallback("/main");
       } else {
         localStorage.removeItem("tableId");
+        localStorage.removeItem("cart");
         navigateCallback("/");
       }
     });
-  }, [navigateCallback]);
+  }, [navigateCallback, t]);
   return (
     <Form className="search" onSubmit={onSubmitHandler}>
       {isLoading && <Loading />}
       <div className={style.searchForm_input}>
         <InputUI
-          label="桌號"
+          label={t("input.table")}
           id="tableId"
           type="number"
-          placeholder="請輸入桌號"
+          placeholder={t("input.tableNumber")}
           inputStyle="input_search"
         />
       </div>
       <div className={style.searchForm_bnt}>
-        <ButtonUI btnStyle="btn__pill">送出</ButtonUI>
+        <ButtonUI btnStyle="btn__pill">{t("button.send")}</ButtonUI>
       </div>
     </Form>
   );

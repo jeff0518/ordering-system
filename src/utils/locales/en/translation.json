@@ -1,0 +1,18 @@
+{
+  "meals": {},
+  "button": {
+    "addCart": "Add Cart",
+    "send": "Send"
+  },
+  "input": {
+    "table": "Table",
+    "tableNumber": "Please enter your table number."
+  },
+  "messages": {
+    "UploadData": "Upload data failed",
+    "tableIncorrect": "Your table number is incorrect!",
+    "alreadyOrder": "Already Order at {{storedTableId}}",
+    "return": "Return to {{storedTableId}}",
+    "again": "Please enter your table number again."
+  }
+}

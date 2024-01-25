@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 import ButtonUI from "../UI/ButtonUI";
 import { MenuProps } from "../../utils/type";
@@ -9,6 +10,7 @@ function MealItem(props: MenuProps) {
   const { productId, name, place, selling, imageUrl } = props;
   const addItemProps = { productId, name, selling, quantity: null };
   const cartCtx = useContext(CartContext);
+  const { t } = useTranslation();
 
   function addMealToCartHandler() {
     cartCtx?.addItem(addItemProps);
@@ -27,7 +29,7 @@ function MealItem(props: MenuProps) {
             btnStyle="btn__pill__mealItem"
             onClick={addMealToCartHandler}
           >
-            加入購物車
+            {t("button.addCart")}
           </ButtonUI>
         </p>
       </div>

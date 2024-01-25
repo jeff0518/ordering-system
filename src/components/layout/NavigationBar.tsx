@@ -1,11 +1,8 @@
 import { useContext } from "react";
 
 import { MdAddShoppingCart } from "react-icons/md";
-import {
-  RiTranslate,
-  RiAccountCircleFill,
-  RiShoppingCart2Line,
-} from "react-icons/ri";
+import { RiAccountCircleFill, RiShoppingCart2Line } from "react-icons/ri";
+import ToggleLanguage from "./ToggleLanguage";
 import ButtonUI from "../UI/ButtonUI";
 import CartContext from "../../context/CartContext";
 import UserProgressContext from "../../context/UserProgressContext.";
@@ -23,9 +20,7 @@ function NavigationBar() {
   return (
     <nav className={style.navigationBar_container}>
       <div className={style.other}>
-        <ButtonUI btnStyle="btn__icon">
-          <RiTranslate size={30} />
-        </ButtonUI>
+        <ToggleLanguage />
         <ButtonUI btnStyle="btn__icon">
           <RiAccountCircleFill size={30} />
         </ButtonUI>

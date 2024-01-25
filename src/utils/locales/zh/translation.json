@@ -1,0 +1,18 @@
+{
+  "meals": {},
+  "button": {
+    "addCart": "加入購物車",
+    "send": "送出"
+  },
+  "input": {
+    "table": "桌號",
+    "tableNumber": "請輸入桌號"
+  },
+  "messages": {
+    "UploadData": "資料上傳失敗",
+    "tableIncorrect": "您輸入的桌號有誤！",
+    "alreadyOrder": "已經在 {{storedTableId}} 點過餐",
+    "return": "回到 {{storedTableId}}",
+    "again": "重新輸入桌號"
+  }
+}
