@@ -29,7 +29,7 @@ function SearchForm() {
       navigate("/main");
     } catch (error) {
       console.log(error);
-      throw new Error(`${t("messages.Upload data failed")}`);
+      throw new Error(`${t("messages.UploadData")}`);
     }
   };
 

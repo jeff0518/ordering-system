@@ -20,9 +20,11 @@ function MealItem(props: MenuProps) {
       <div className={style.article}>
         <img src={imageUrl} alt={name} />
         <div className={style.infoBox}>
-          <h3>{name}</h3>
-          <p className={style.selling}>$ {selling}</p>
-          <p className={style.place}>產地：{place}</p>
+          <h3>{t(`meals.name.${name}`)}</h3>
+          <p className={style.selling}>
+            {t("meals.selling", { selling: `${selling}` })}
+          </p>
+          <p className={style.place}>{t(`meals.place.${place}`)}</p>
         </div>
         <p className={style.actions}>
           <ButtonUI

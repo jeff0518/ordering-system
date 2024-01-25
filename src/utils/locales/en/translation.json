@@ -1,5 +1,24 @@
 {
-  "meals": {},
+  "meals": {
+    "place": {
+      "美國": "place : America",
+      "紐澳": "place : New Zealand & Australia",
+      "台灣": "place : Taiwan"
+    },
+    "selling": "$ {{selling}}",
+    "name": {
+      "牛肉": "Beef",
+      "豬肉": "Pork",
+      "雞肉": "Chicken",
+      "羊肉": "Lamb",
+      "蛋餃": "Egg Dumplings",
+      "魚餃": "Fish Dumplings",
+      "茼蒿菜": "Chrysanthemum Greens",
+      "高麗菜": "Chinese Cabbage",
+      "可樂": "Coca-Cola",
+      "麥茶": "Barley Tea"
+    }
+  },
   "button": {
     "addCart": "Add Cart",
     "send": "Send"
