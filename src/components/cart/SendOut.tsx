@@ -12,34 +12,25 @@ import { Toast } from "../../utils/getSweetalert";
 function SendOut() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+  const [dataBase, setDataBase] = useState<CartDataProps | undefined>(
+    undefined
+  );
   const [newCartData, setNewCartData] = useState<CartDataProps | undefined>(
     undefined
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const cartTotal = cartCtx?.items.reduce(
+  const cartTotal = cartCtx!.items.reduce(
     (totalPrice, item) =>
       totalPrice + (item.quantity ? +item.quantity : 0) * +item.selling,
     0
   );
 
-  const tableId = localStorage.getItem("tableId");
-
   const uploadData = async (tableData: CartDataProps) => {
     try {
-      await patchCart(tableData);
-    } catch (error) {
-      console.log(error);
-      throw new Error("資料上傳失敗");
-    }
-  };
-
-  async function submitHandler() {
-    try {
-      if (newCartData !== undefined) {
-        userProgressCtx.hideSendOut();
+      if (tableData !== undefined) {
         setIsLoading(true);
-        await uploadData(newCartData);
+        await patchCart(tableData);
         setIsLoading(false);
         cartCtx?.clearCart();
         Toast.fire({
@@ -52,9 +43,55 @@ function SendOut() {
           title: "沒有購物車資料!",
         });
       }
+
+      saveLocalStorage(tableData);
     } catch (error) {
       console.log(error);
+      throw new Error("資料上傳失敗");
     }
+  };
+
+  const mergeLSDataWithCartHandler = () => {
+    const storedCartData = localStorage.getItem("cart");
+    if (storedCartData) {
+      const getLSDataArray = JSON.parse(storedCartData);
+      const { tableId, shoppingCar, totalAmount } = getLSDataArray;
+      const newAmount = cartTotal + +totalAmount;
+
+      const newItems = shoppingCar;
+      newCartData?.shoppingCar.map((item) => {
+        let isFind = false;
+        for (let i = 0; i < shoppingCar.length; i++) {
+          if (item.productId === shoppingCar[i].productId) {
+            newItems[i].quantity += item.quantity;
+            isFind = true;
+          }
+        }
+
+        if (!isFind) {
+          newItems.push(item);
+        }
+      });
+
+      const updatedData = {
+        tableId: tableId,
+        shoppingCar: newItems,
+        totalAmount: newAmount,
+      };
+      setDataBase(updatedData);
+    } else {
+      setDataBase(newCartData);
+    }
+  };
+
+  const saveLocalStorage = (tableData: CartDataProps) => {
+    const cartDataString = JSON.stringify(tableData);
+    localStorage.setItem(`cart`, cartDataString);
+  };
+
+  function submitHandler() {
+    mergeLSDataWithCartHandler();
+    userProgressCtx.hideSendOut();
   }
 
   function goToCartHandler() {
@@ -65,9 +102,10 @@ function SendOut() {
   }
 
   useEffect(() => {
-    if (tableId && cartTotal) {
+    const storedTableId = localStorage.getItem("tableId");
+    if (storedTableId && cartTotal) {
       const tableData = {
-        tableId: tableId,
+        tableId: storedTableId,
         shoppingCar: cartCtx!.items.map((item) => ({
           productId: item.productId,
           name: item.name,
@@ -79,7 +117,12 @@ function SendOut() {
 
       setNewCartData(tableData as CartDataProps);
     }
-  }, [tableId, cartTotal, cartCtx]);
+  }, [cartCtx, cartTotal]);
+
+  useEffect(() => {
+    dataBase && uploadData(dataBase);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataBase]);
   return (
     <>
       {isLoading && <Loading />}
@@ -107,7 +150,7 @@ function SendOut() {
             再考慮一下
           </ButtonUI>
           <ButtonUI btnStyle="btn__cart" onClick={submitHandler}>
-            送出
+            確認
           </ButtonUI>
         </div>
       </Modal>
