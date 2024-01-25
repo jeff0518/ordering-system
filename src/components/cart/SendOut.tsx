@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import Modal from "../UI/Modal";
 import ButtonUI from "../UI/ButtonUI";
@@ -19,6 +20,7 @@ function SendOut() {
     undefined
   );
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const cartTotal = cartCtx!.items.reduce(
     (totalPrice, item) =>
@@ -35,19 +37,19 @@ function SendOut() {
         cartCtx?.clearCart();
         Toast.fire({
           icon: "success",
-          title: "已送出!",
+          title: `${t("messages.sent")}`,
         });
       } else {
         Toast.fire({
           icon: "error",
-          title: "沒有購物車資料!",
+          title: `${t("messages.noCartData")}`,
         });
       }
 
       saveLocalStorage(tableData);
     } catch (error) {
       console.log(error);
-      throw new Error("資料上傳失敗");
+      throw new Error(`${t("messages.UploadData")}`);
     }
   };
 
@@ -136,21 +138,23 @@ function SendOut() {
             : () => {}
         }
       >
-        <h2>確定要送出以下餐點？</h2>
+        <h2>{t("text.sure")}</h2>
         <ul>
           {cartCtx?.items.map((item) => (
             <li key={item.productId}>
-              {item.name} - {item.quantity} 份
+              {t(`meals.name.${item.name}`)}- {item.quantity}
             </li>
           ))}
         </ul>
-        <p className="cart_total">總金額：$ {cartTotal}</p>
+        <p className="cart_total">
+          {t("text.total", { cartTotal: `${cartTotal}` })}
+        </p>
         <div className="modal_actions">
           <ButtonUI btnStyle="btn__text" onClick={goToCartHandler}>
-            再考慮一下
+            {t("button.consider")}
           </ButtonUI>
           <ButtonUI btnStyle="btn__cart" onClick={submitHandler}>
-            確認
+            {t("button.confirm")}
           </ButtonUI>
         </div>
       </Modal>

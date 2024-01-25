@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 import CartContext from "../../context/CartContext";
 import UserProgressContext from "../../context/UserProgressContext.";
@@ -9,6 +10,7 @@ import Modal from "../UI/Modal";
 function Cart() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+  const { t } = useTranslation();
 
   const cartTotal = cartCtx?.items.reduce(
     (totalPrice, item) =>
@@ -32,7 +34,7 @@ function Cart() {
         userProgressCtx.progress === "cart" ? closeCartHandler : () => {}
       }
     >
-      <h2>購物車</h2>
+      <h2>{t("text.cart")}</h2>
       <ul>
         {cartCtx?.items.map((item) => (
           <CartItem
@@ -48,11 +50,11 @@ function Cart() {
       <p className="cart_total">$ {cartTotal}</p>
       <div className="modal_actions">
         <ButtonUI btnStyle="btn__text" onClick={closeCartHandler}>
-          關閉
+          {t("button.close")}
         </ButtonUI>
         {cartCtx?.items.length !== 0 && (
           <ButtonUI btnStyle="btn__cart" onClick={showSendOutHandler}>
-            送出
+            {t("button.send")}
           </ButtonUI>
         )}
       </div>

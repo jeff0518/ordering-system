@@ -19,9 +19,17 @@
       "麥茶": "Barley Tea"
     }
   },
+  "text": {
+    "cart": "Shopping Cart",
+    "sure": "Do you confirm that you want to send out the following meals?",
+    "total": "Grand Total : {{cartTotal}}"
+  },
   "button": {
     "addCart": "Add Cart",
-    "send": "Send"
+    "send": "Send",
+    "close": "Close",
+    "consider": "Give It Some Thought",
+    "confirm": "Confirm"
   },
   "input": {
     "table": "Table",
@@ -32,6 +40,8 @@
     "tableIncorrect": "Your table number is incorrect!",
     "alreadyOrder": "Already Order at {{storedTableId}}",
     "return": "Return to {{storedTableId}}",
-    "again": "Please enter your table number again."
+    "again": "Please enter your table number again.",
+    "sent": "Successfully sent!",
+    "noCartData": "There is no shopping cart data available!"
   }
 }

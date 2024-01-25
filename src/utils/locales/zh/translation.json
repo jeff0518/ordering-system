@@ -19,9 +19,17 @@
       "麥茶": "麥茶"
     }
   },
+  "text": {
+    "cart": "購物車",
+    "sure": "確定要送出以下餐點？",
+    "total": "總金額 : {{cartTotal}}"
+  },
   "button": {
     "addCart": "加入購物車",
-    "send": "送出"
+    "send": "送出",
+    "close": "關閉",
+    "consider": "再考慮一下",
+    "confirm": "確認"
   },
   "input": {
     "table": "桌號",
@@ -32,6 +40,8 @@
     "tableIncorrect": "您輸入的桌號有誤！",
     "alreadyOrder": "已經在 {{storedTableId}} 點過餐",
     "return": "回到 {{storedTableId}}",
-    "again": "重新輸入桌號"
+    "again": "重新輸入桌號",
+    "sent": "已送出!",
+    "noCartData": "沒有購物車資料!"
   }
 }

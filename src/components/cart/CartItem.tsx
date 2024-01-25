@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import ButtonUI from "../UI/ButtonUI";
 import style from "./CartItem.module.scss";
 
@@ -9,10 +11,11 @@ interface CartItemProps {
   onRemove: () => void;
 }
 function CartItem({ name, quantity, selling, onAdd, onRemove }: CartItemProps) {
+  const { t } = useTranslation();
   return (
     <li className={style.cartItem_container}>
       <p>
-        {name} - {quantity} * {selling}
+        {t(`meals.name.${name}`)} - {quantity} * {selling}
       </p>
       <div className={style.cartItem_actions}>
         <ButtonUI btnStyle="btn__round__small" onClick={onRemove}>
