@@ -41,6 +41,7 @@ function SendOut() {
         setIsLoading(true);
         await uploadData(newCartData);
         setIsLoading(false);
+        cartCtx?.clearCart();
         Toast.fire({
           icon: "success",
           title: "已送出!",
