@@ -3,12 +3,18 @@
 
 .header_container {
   width: 100%;
-  @include center-both;
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   padding: 2rem 10%;
+  z-index: 100;
+  background: linear-gradient(#29251c, #2c2306);
 }
 
 .children {
   width: 100%;
+  padding-top: 8rem;
   height: calc(100vh - 8rem);
 }
 
