@@ -22,14 +22,16 @@
   "text": {
     "cart": "Shopping Cart",
     "sure": "Do you confirm that you want to send out the following meals?",
-    "total": "Grand Total : {{cartTotal}}"
+    "total": "Grand Total : {{cartTotal}}",
+    "error": "Oops! An error occurred. Please return to the main page."
   },
   "button": {
     "addCart": "Add Cart",
     "send": "Send",
     "close": "Close",
     "consider": "Give It Some Thought",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "return": "Return to the main page."
   },
   "input": {
     "table": "Table",

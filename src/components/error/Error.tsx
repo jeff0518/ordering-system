@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import ButtonUI from "../UI/ButtonUI";
 import style from "./Error.module.scss";
+import { useTranslation } from "react-i18next";
 
 function Error() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function goToMainPageHandler() {
     navigate("/main");
@@ -14,9 +16,9 @@ function Error() {
     <div className={style.container}>
       <div>
         <h1>Oops!</h1>
-        <p>抱歉！出現錯誤，請按下方按鈕回到主頁面</p>
+        <p>{t("error")}</p>
         <ButtonUI btnStyle="btn__link" onClick={goToMainPageHandler}>
-          回到主頁面
+          {t("return")}
         </ButtonUI>
       </div>
     </div>
