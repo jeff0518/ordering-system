@@ -23,7 +23,9 @@
     "cart": "Shopping Cart",
     "sure": "Do you confirm that you want to send out the following meals?",
     "total": "Grand Total : {{cartTotal}}",
-    "error": "Oops! An error occurred. Please return to the main page."
+    "error": "Oops! An error occurred. Please return to the main page.",
+    "login": "Log In",
+    "create": "Create new user"
   },
   "button": {
     "addCart": "Add Cart",
@@ -31,11 +33,16 @@
     "close": "Close",
     "consider": "Give It Some Thought",
     "confirm": "Confirm",
-    "return": "Return to the main page."
+    "return": "Return to the main page.",
+    "login": "Log In",
+    "create": "Create new user",
+    "save": "Save"
   },
   "input": {
     "table": "Table",
-    "tableNumber": "Please enter your table number."
+    "tableNumber": "Please enter your table number.",
+    "phone": "Phone Number : ",
+    "phoneNumber": "Enter your phone number : 09XX XXX XXX"
   },
   "messages": {
     "UploadData": "Upload data failed",

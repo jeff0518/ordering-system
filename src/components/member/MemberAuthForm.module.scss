@@ -1,0 +1,22 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.memberAuthForm_container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .title {
+    margin: 0.5rem 0;
+    @include text-styles(1.5rem, 700, color.$gray-10);
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

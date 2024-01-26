@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { MdAddShoppingCart } from "react-icons/md";
 import { RiAccountCircleFill, RiShoppingCart2Line } from "react-icons/ri";
@@ -11,8 +12,13 @@ import style from "./NavigationBar.module.scss";
 function NavigationBar() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+  const navigate = useNavigate();
 
   const isCart = cartCtx?.items.length ? true : false;
+
+  function goToMemberPageHandler() {
+    navigate("/member");
+  }
 
   function showCartHandler() {
     userProgressCtx.showCart();
@@ -21,7 +27,7 @@ function NavigationBar() {
     <nav className={style.navigationBar_container}>
       <div className={style.other}>
         <ToggleLanguage />
-        <ButtonUI btnStyle="btn__icon">
+        <ButtonUI btnStyle="btn__icon" onClick={goToMemberPageHandler}>
           <RiAccountCircleFill size={30} />
         </ButtonUI>
       </div>

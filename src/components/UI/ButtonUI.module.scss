@@ -18,18 +18,16 @@
 }
 
 .btn__pill__mealItem {
-  width: 50%;
-  height: 2rem;
-  margin: 0 auto;
-  @include center-both;
+  padding: 0.5rem 1.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 4px;
   @include text-styles(1rem, 500, color.$gray-10);
+  background-color: color.$secondary-color;
   cursor: pointer;
 
   &:hover,
   &:active {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background-color: color.$brand-color;
     @include text-styles(1rem, 500, color.$secondary-color);
   }

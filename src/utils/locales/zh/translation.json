@@ -23,7 +23,9 @@
     "cart": "購物車",
     "sure": "確定要送出以下餐點？",
     "total": "總金額 : {{cartTotal}}",
-    "error": "抱歉！出現錯誤，請按下方按鈕回到主頁面"
+    "error": "抱歉！出現錯誤，請按下方按鈕回到主頁面",
+    "login": "登入會員",
+    "create": "建立新會員"
   },
   "button": {
     "addCart": "加入購物車",
@@ -31,11 +33,16 @@
     "close": "關閉",
     "consider": "再考慮一下",
     "confirm": "確認",
-    "return": "回到主頁面"
+    "return": "回到主頁面",
+    "login": "登入會員",
+    "create": "建立新會員",
+    "save": "儲存"
   },
   "input": {
     "table": "桌號",
-    "tableNumber": "請輸入桌號"
+    "tableNumber": "請輸入桌號",
+    "phone": "手機號碼 : ",
+    "phoneNumber": "請輸入手機號碼 : 09XX XXX XXX"
   },
   "messages": {
     "UploadData": "資料上傳失敗",

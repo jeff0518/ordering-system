@@ -1,11 +1,13 @@
 @use "/src/styles/colors" as color;
 @import "/src/styles/mixin";
 
-.home_container {
+.pages {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 8rem);
   padding: 2rem 10%;
+}
 
+.home {
   .header {
     display: flex;
     justify-content: space-between;
@@ -14,5 +16,13 @@
   .form {
     width: 100%;
     margin-top: 25%;
+  }
+}
+
+.member {
+  .form {
+    padding: 2rem;
+    width: 100%;
+    margin-top: 10%;
   }
 }

@@ -7,6 +7,11 @@
   padding: 2rem 10%;
 }
 
+.children {
+  width: 100%;
+  height: calc(100vh - 8rem);
+}
+
 @media screen and (min-width: 768px) {
   .header_container {
     display: flex;

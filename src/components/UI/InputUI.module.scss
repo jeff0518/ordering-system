@@ -29,6 +29,29 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.input_auth {
+  width: 100%;
+  margin-bottom: 0.5rem;
+
+  label {
+    width: 100%;
+    display: block;
+    @include text-styles(1rem, 500, color.$gray-8);
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    padding: 0.25rem;
+    width: 100%;
+    border: 1px solid color.$gray-1;
+    border-radius: 4px;
+    background-color: color.$gray-3;
+    font: inherit;
+    color: color.$brand-color;
+    text-align: left;
+  }
+}
+
 .input_modal {
   width: 100%;
   margin-bottom: 0.5rem;
