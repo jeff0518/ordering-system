@@ -10,14 +10,35 @@ export async function createMember(phoneNumber: string) {
     if (response.status >= 200 && response.status < 300) {
       return response;
     } else {
-      throw new Error(
-        response.data.message ||
-          "The response status is not in the 2xx rang.(不在2xx範圍內)"
-      );
+      throw new Error(response.data.message || "rang");
     }
   } catch (error) {
-    throw new Error(
-      "Connection to the Server Failed or the Server Returned an Error.(無法連接至伺服器或伺服器返回了錯誤訊息)"
+    throw new Error("failed");
+  }
+}
+
+export async function getMember(phoneNumber: string) {
+  try {
+    const response = await axios.get(
+      `https://simple-order-system.vercel.app/api/member/${phoneNumber}`
     );
+
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    } else {
+      throw new Error(response.data.message || "rang");
+    }
+  } catch (error) {
+    if (
+      axios.isAxiosError(error) &&
+      error.response &&
+      error.response.data &&
+      error.response.data.error
+    ) {
+      const errorMessage = error.response.data.error;
+      throw new Error(`${errorMessage}`);
+    } else {
+      throw new Error("failed");
+    }
   }
 }

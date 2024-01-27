@@ -28,8 +28,11 @@ function SearchForm() {
       setIsLoading(false);
       navigate("/main");
     } catch (error) {
-      console.log(error);
-      throw new Error(`${t("messages.UploadData")}`);
+      Alert.fire({
+        title: `${t(`messages.sever.${(error as Error).message}`)}`,
+        icon: "error",
+      });
+      setIsLoading(false);
     }
   };
 
@@ -54,7 +57,6 @@ function SearchForm() {
 
   useEffect(() => {
     const storedTableId = localStorage.getItem("tableId");
-    console.log(storedTableId);
 
     if (!storedTableId) return;
 

@@ -14,15 +14,10 @@ export async function searchTable(tableId: string) {
     if (response.status >= 200 && response.status < 300) {
       return data;
     } else {
-      throw new Error(
-        data.message ||
-          "The response status is not in the 2xx rang.(不在2xx範圍內)"
-      );
+      throw new Error(data.message || "rang");
     }
   } catch (error) {
-    throw new Error(
-      "Connection to the Server Failed or the Server Returned an Error.(無法連接至伺服器或伺服器返回了錯誤訊息)"
-    );
+    throw new Error("failed");
   }
 }
 
@@ -37,14 +32,9 @@ export async function patchCart(props: CartDataProps) {
     if (response.status >= 200 && response.status < 300) {
       return data;
     } else {
-      throw new Error(
-        data.message ||
-          "The response status is not in the 2xx rang.(不在2xx範圍內)"
-      );
+      throw new Error(data.message || "rang");
     }
   } catch (error) {
-    throw new Error(
-      "Connection to the Server Failed or the Server Returned an Error.(無法連接至伺服器或伺服器返回了錯誤訊息)"
-    );
+    throw new Error("failed");
   }
 }

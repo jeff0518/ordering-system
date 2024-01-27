@@ -46,6 +46,7 @@
   },
   "messages": {
     "UploadData": "資料上傳失敗",
+    "success": "成功登錄",
     "tableIncorrect": "您輸入的桌號有誤！",
     "phoneIncorrect": "您輸入的桌號有誤！",
     "alreadyOrder": "已經在 {{storedTableId}} 點過餐",
@@ -56,6 +57,11 @@
     "member": {
       "成功建立會員資料": "成功建立會員資料",
       "已經有建立會員資料": "已經有建立會員資料"
+    },
+    "sever": {
+      "failed": "無法連接至伺服器或伺服器返回了錯誤訊息",
+      "rang": "回應狀態不在2xx範圍內",
+      "noFound": "找不到此會員"
     }
   }
 }

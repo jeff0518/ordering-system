@@ -46,6 +46,7 @@
   },
   "messages": {
     "UploadData": "Upload data failed",
+    "success": "Successfully logged in",
     "tableIncorrect": "Your table number is incorrect!",
     "phoneIncorrect": "Your phone number is incorrect!",
     "alreadyOrder": "Already Order at {{storedTableId}}",
@@ -56,6 +57,11 @@
     "member": {
       "成功建立會員資料": "Registered member data successfully",
       "已經有建立會員資料": "Member data already registered"
+    },
+    "sever": {
+      "failed": "Connection to the Server Failed or the Server Returned an Error.",
+      "rang": "The response status is not in the 2xx rang.",
+      "noFound": "The member could not be found"
     }
   }
 }

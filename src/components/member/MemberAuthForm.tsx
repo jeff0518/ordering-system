@@ -5,7 +5,7 @@ import Form from "../UI/Form";
 import InputUI from "../UI/InputUI";
 import ButtonUI from "../UI/ButtonUI";
 import Loading from "../error/Loading";
-import { createMember } from "../../services/memberAPI";
+import { createMember, getMember } from "../../services/memberAPI";
 import { Alert, Toast } from "../../utils/getSweetalert";
 import style from "./MemberAuthForm.module.scss";
 
@@ -24,16 +24,37 @@ function MemberAuthForm() {
           icon: "success",
           title: `${t(`messages.member.${response.data.message}`)}`,
         });
-        setIsLoading(false);
       } else if (response.status === 202) {
         Toast.fire({
           icon: "warning",
           title: `${t(`messages.member.${response.data.message}`)}`,
         });
-        setIsLoading(false);
       }
+
+      setIsLoading(false);
     } catch (error) {
-      console.log();
+      Alert.fire({
+        title: `${t(`messages.sever.${(error as Error).message}`)}`,
+        icon: "error",
+      });
+      setIsLoading(false);
+    }
+  }
+
+  async function loginHandler(phoneNumber: string) {
+    setIsLoading(true);
+    try {
+      await getMember(phoneNumber);
+      Toast.fire({
+        icon: "success",
+        title: `${t("messages.success")}`,
+      });
+      setIsLoading(false);
+    } catch (error) {
+      Alert.fire({
+        title: `${t(`messages.sever.${(error as Error).message}`)}`,
+        icon: "error",
+      });
       setIsLoading(false);
     }
   }
@@ -44,9 +65,16 @@ function MemberAuthForm() {
     const formElement = event.target as HTMLFormElement;
     const fd = new FormData(formElement);
     const phoneNumber = fd.get("phoneNumber");
+    const formattedPhoneNumber = phoneNumber
+      ? phoneNumber.toString().trim()
+      : "";
 
-    if (phoneNumber && phoneNumber.toString().trim().length === 10) {
-      createMemberHandler(phoneNumber.toString().trim());
+    if (formattedPhoneNumber.length === 10) {
+      if (isLogin) {
+        loginHandler(formattedPhoneNumber);
+      } else {
+        createMemberHandler(formattedPhoneNumber);
+      }
     } else {
       Alert.fire({
         title: `${t("messages.tableIncorrect")}`,
