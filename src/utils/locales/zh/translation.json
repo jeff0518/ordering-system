@@ -47,10 +47,15 @@
   "messages": {
     "UploadData": "資料上傳失敗",
     "tableIncorrect": "您輸入的桌號有誤！",
+    "phoneIncorrect": "您輸入的桌號有誤！",
     "alreadyOrder": "已經在 {{storedTableId}} 點過餐",
     "return": "回到 {{storedTableId}}",
     "again": "重新輸入桌號",
     "sent": "已送出!",
-    "noCartData": "沒有購物車資料!"
+    "noCartData": "沒有購物車資料!",
+    "member": {
+      "成功建立會員資料": "成功建立會員資料",
+      "已經有建立會員資料": "已經有建立會員資料"
+    }
   }
 }
