@@ -3,13 +3,13 @@
 
 .container {
   width: 100vw;
-  height: 100vh;
-  @include center-both;
-  flex-direction: column;
+  height: calc(100vh - 8rem);
+  padding: 2rem 10%;
 
   div {
-    width: 80%;
+    width: 100%;
     max-width: 40rem;
+    margin: 8rem auto 0;
     padding: 1rem;
     @include center-both;
     flex-direction: column;
@@ -25,6 +25,7 @@
     }
 
     p {
+      margin-top: 1rem;
       @include text-styles(1rem, 500, color.$gray-10);
     }
   }

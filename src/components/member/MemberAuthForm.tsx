@@ -1,17 +1,21 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import Form from "../UI/Form";
 import InputUI from "../UI/InputUI";
 import ButtonUI from "../UI/ButtonUI";
 import Loading from "../error/Loading";
+import MemberContext from "../../context/MemberContext";
 import { createMember, getMember } from "../../services/memberAPI";
 import { Alert, Toast } from "../../utils/getSweetalert";
 import style from "./MemberAuthForm.module.scss";
 
 function MemberAuthForm() {
+  const memberCtx = useContext(MemberContext);
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   async function createMemberHandler(phoneNumber: string) {
@@ -44,12 +48,15 @@ function MemberAuthForm() {
   async function loginHandler(phoneNumber: string) {
     setIsLoading(true);
     try {
-      await getMember(phoneNumber);
+      const { data } = await getMember(phoneNumber);
+      memberCtx?.saveItem(data.data);
       Toast.fire({
         icon: "success",
         title: `${t("messages.success")}`,
       });
       setIsLoading(false);
+      localStorage.setItem("phoneId", `${phoneNumber}`);
+      navigate("/member/info");
     } catch (error) {
       Alert.fire({
         title: `${t(`messages.sever.${(error as Error).message}`)}`,

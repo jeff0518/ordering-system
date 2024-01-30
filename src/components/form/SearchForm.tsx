@@ -78,6 +78,7 @@ function SearchForm() {
       } else {
         localStorage.removeItem("tableId");
         localStorage.removeItem("cart");
+        localStorage.removeItem("phoneId");
         navigateCallback("/");
       }
     });

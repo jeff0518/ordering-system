@@ -48,7 +48,7 @@
     "UploadData": "資料上傳失敗",
     "success": "成功登錄",
     "tableIncorrect": "您輸入的桌號有誤！",
-    "phoneIncorrect": "您輸入的桌號有誤！",
+    "phoneIncorrect": "您輸入的手機號碼有誤！",
     "alreadyOrder": "已經在 {{storedTableId}} 點過餐",
     "return": "回到 {{storedTableId}}",
     "again": "重新輸入桌號",

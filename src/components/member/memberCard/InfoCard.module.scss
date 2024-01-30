@@ -1,0 +1,46 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.infoCard_container {
+  width: 80%;
+  @include center-both;
+  @include text-styles(0.8rem, 500, color.$gray-10);
+  gap: 0.25rem;
+
+  .infoCard_fist {
+    width: 50%;
+    min-width: 80px;
+    height: 2rem;
+    @include center-both;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 15px;
+    background-color: color.$gray-3;
+  }
+
+  .infoCard_last {
+    all: unset;
+    width: 50%;
+    min-width: 80px;
+    height: 2rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+    background-color: color.$gray-3;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .infoCard_container {
+    width: 90%;
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .infoCard_container {
+    width: 90%;
+    gap: 2rem;
+  }
+}

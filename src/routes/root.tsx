@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 
 import Header from "../components/layout/Header";
 import HomePage from "../pages/HomePage";
+import MemberRoute from "./MemberRoute";
 import MainPage from "../pages/MainPage";
-import MemberPage from "../pages/MemberPage";
 import ErrorPage from "../pages/ErrorPage";
 
 function Root() {
@@ -17,7 +17,7 @@ function Root() {
             <Header>
               <Routes>
                 <Route path="/main" element={<MainPage />} />
-                <Route path="/member" element={<MemberPage />} />
+                <Route path="/member/*" element={<MemberRoute />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </Header>

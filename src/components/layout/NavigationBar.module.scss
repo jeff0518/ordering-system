@@ -2,13 +2,14 @@
 @import "/src//styles/mixin";
 
 .navigationBar_container {
+  width: 365px;
   .other {
     width: 6rem;
     height: 2rem;
     border-radius: 30px;
     position: fixed;
-    top: 1.5rem;
-    right: 0.5rem;
+    top: 0.5rem;
+    left: 2rem;
     background-color: color.$gray-5;
     z-index: 10;
     @include center-both;
@@ -20,11 +21,25 @@
     border-radius: 50%;
     position: fixed;
     bottom: 3rem;
-    right: 2rem;
+    left: 2rem;
     object-fit: contain;
     background-color: color.$gray-5;
     z-index: 10;
     @include center-both;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .navigationBar_container {
+    .other {
+      left: unset;
+      top: 1.5rem;
+      right: 2rem;
+    }
+    .shoppingCar {
+      left: unset;
+      right: 2rem;
+    }
   }
 }
 

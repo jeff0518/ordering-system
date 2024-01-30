@@ -1,5 +1,5 @@
-import MemberAuthForm from "../components/member/MemberAuthForm";
-import style from "./Pages.module.scss";
+import MemberAuthForm from "../../components/member/MemberAuthForm";
+import style from "../Pages.module.scss";
 
 function MemberPage() {
   return (

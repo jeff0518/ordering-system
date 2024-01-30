@@ -1,0 +1,26 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.spendingRecordsCard_container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+  @include text-styles(1rem, 500, color.$gray-10);
+
+  .time,
+  .spend {
+    width: 100%;
+    border: 2px solid color.$gray-10;
+    border-radius: 30px;
+    background-color: color.$gray-1;
+    @include center-both;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .spendingRecordsCard_container {
+    width: 60%;
+    gap: 2rem;
+  }
+}

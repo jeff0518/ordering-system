@@ -15,7 +15,8 @@
 
   .form {
     width: 100%;
-    margin-top: 25%;
+    max-width: 40rem;
+    margin: 10rem auto 0;
   }
 }
 
@@ -25,4 +26,9 @@
     width: 100%;
     margin-top: 10%;
   }
+}
+
+.memberInfo {
+  padding: 2rem;
+  width: 100%;
 }

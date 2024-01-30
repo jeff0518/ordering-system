@@ -16,9 +16,9 @@ function Error() {
     <div className={style.container}>
       <div>
         <h1>Oops!</h1>
-        <p>{t("error")}</p>
+        <p>{t("text.error")}</p>
         <ButtonUI btnStyle="btn__link" onClick={goToMainPageHandler}>
-          {t("return")}
+          {t("button.return")}
         </ButtonUI>
       </div>
     </div>
