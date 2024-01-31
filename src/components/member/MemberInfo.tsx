@@ -50,6 +50,8 @@ function MemberInfo() {
     return dateComparison;
   });
 
+  const isShow = spendingRecords.length > 0 ? true : false;
+
   function clickButtonIconHandler() {
     setSave((prev) => !prev);
   }
@@ -114,7 +116,7 @@ function MemberInfo() {
         </div>
       </div>
       <div className={style.spendingRecords_info}>
-        {sortSpendingRecords ? (
+        {isShow ? (
           <div className={style.title}>
             <SpendingRecordsCard
               time={t("text.date")}
@@ -124,7 +126,7 @@ function MemberInfo() {
           </div>
         ) : null}
 
-        {sortSpendingRecords ? (
+        {isShow ? (
           <div className={style.spendingBox}>
             {sortSpendingRecords.map((item: SpendingRecordsProps) => {
               return (
