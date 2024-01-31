@@ -18,6 +18,14 @@
   }
 }
 
+.title {
+  .time,
+  .spend {
+    border: none;
+    background-color: color.$secondary-color;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .spendingRecordsCard_container {
     width: 60%;

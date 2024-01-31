@@ -99,6 +99,7 @@ function MemberInfo() {
             <SpendingRecordsCard
               time={t("text.date")}
               spend={t("text.point")}
+              className="title"
             />
           </div>
         ) : null}
