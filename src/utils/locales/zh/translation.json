@@ -67,7 +67,8 @@
     "sever": {
       "failed": "無法連接至伺服器或伺服器返回了錯誤訊息",
       "rang": "回應狀態不在2xx範圍內",
-      "noFound": "找不到此會員"
+      "noFound": "找不到此會員",
+      "internalError": "內部伺服器錯誤"
     }
   }
 }

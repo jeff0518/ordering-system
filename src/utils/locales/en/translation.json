@@ -67,7 +67,8 @@
     "sever": {
       "failed": "Connection to the Server Failed or the Server Returned an Error.",
       "rang": "The response status is not in the 2xx rang.",
-      "noFound": "The member could not be found"
+      "noFound": "The member could not be found",
+      "internalError": "Internal Server Error"
     }
   }
 }

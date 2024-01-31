@@ -6,7 +6,9 @@ import { IoMdCreate, IoIosSave } from "react-icons/io";
 import SpendingRecordsCard from "./memberCard/SpendingRecordsCard";
 import InfoCard from "./memberCard/InfoCard";
 import MemberContext from "../../context/MemberContext";
-import { Alert } from "../../utils/getSweetalert";
+import Loading from "../error/Loading";
+import { Toast, Alert } from "../../utils/getSweetalert";
+import { patchMember } from "../../services/memberAPI";
 import style from "./MemberInfo.module.scss";
 
 export interface SpendingRecordsProps {
@@ -17,6 +19,7 @@ export interface SpendingRecordsProps {
 
 function MemberInfo() {
   const memberCtx = useContext(MemberContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -30,7 +33,7 @@ function MemberInfo() {
 
   const { name, phoneNumber, count, point, spendingRecords } = memberCtx!.item;
   const [isSave, setSave] = useState(false);
-  const [fixName, setFixName] = useState(phoneNumber);
+  const [fixName, setFixName] = useState(name);
 
   const sortSpendingRecords = spendingRecords.sort(function (a, b) {
     const dateA = new Date(a.date);
@@ -51,10 +54,27 @@ function MemberInfo() {
     setSave((prev) => !prev);
   }
 
-  function uploadNameHandler() {}
+  async function uploadNameHandler() {
+    setIsLoading(true);
+    try {
+      await patchMember({ fixName, phoneNumber });
+      Toast.fire({
+        icon: "success",
+        title: `${t("messages.sent")}`,
+      });
+      setIsLoading(false);
+    } catch (error) {
+      Alert.fire({
+        title: `${t(`messages.sever.${(error as Error).message}`)}`,
+        icon: "error",
+      });
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className={style.memberInfo_container}>
+      {isLoading && <Loading />}
       <div className={style.info}>
         <div className={style.info__item}>
           <InfoCard fistText={t("text.phoneNumber")} lastText={phoneNumber} />
@@ -70,7 +90,7 @@ function MemberInfo() {
           ) : (
             <InfoCard
               fistText={t("text.name")}
-              lastText={name ? name : fixName}
+              lastText={fixName ? fixName : phoneNumber}
               readOnly={true}
             />
           )}
