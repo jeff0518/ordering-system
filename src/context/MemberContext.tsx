@@ -22,6 +22,7 @@ interface MemberContextType {
   item: MemberItem;
   saveItem: (item: MemberItem) => void;
   addSpendingItem: (newItem: SpendingItem) => void;
+  clearMember: () => void;
 }
 
 const defaultMember = {
@@ -54,10 +55,15 @@ export function MemberContextProvider({ children }: MemberProviderProps) {
     setMemberData(updatedItems);
   }
 
+  function clearMember() {
+    setMemberData(defaultMember);
+  }
+
   const memberContext = {
     item: memberData,
     saveItem,
     addSpendingItem,
+    clearMember,
   };
   return (
     <MemberContext.Provider value={memberContext}>

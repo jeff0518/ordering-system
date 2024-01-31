@@ -8,8 +8,8 @@
     height: 2rem;
     border-radius: 30px;
     position: fixed;
-    top: 0.5rem;
-    left: 2rem;
+    top: 1.5rem;
+    left: 15rem;
     background-color: color.$gray-5;
     z-index: 10;
     @include center-both;
@@ -21,7 +21,7 @@
     border-radius: 50%;
     position: fixed;
     bottom: 3rem;
-    left: 2rem;
+    left: 18rem;
     object-fit: contain;
     background-color: color.$gray-5;
     z-index: 10;
@@ -33,7 +33,6 @@
   .navigationBar_container {
     .other {
       left: unset;
-      top: 1.5rem;
       right: 2rem;
     }
     .shoppingCar {
