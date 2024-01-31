@@ -51,43 +51,55 @@ function MemberInfo() {
     setSave((prev) => !prev);
   }
 
+  function uploadNameHandler() {}
+
   return (
     <div className={style.memberInfo_container}>
       <div className={style.info}>
         <div className={style.info__item}>
-          <InfoCard fistText="會員手機" lastText={phoneNumber} />
+          <InfoCard fistText={t("text.phoneNumber")} lastText={phoneNumber} />
         </div>
         <div className={style.info__title}>
           {isSave ? (
             <InfoCard
-              fistText="姓名"
+              fistText={t("text.name")}
               lastText={fixName}
               readOnly={false}
               setFixName={setFixName}
             />
           ) : (
             <InfoCard
-              fistText="姓名"
+              fistText={t("text.name")}
               lastText={name ? name : fixName}
               readOnly={true}
             />
           )}
 
           <span className={style.icon} onClick={clickButtonIconHandler}>
-            {isSave ? <IoIosSave size={25} /> : <IoMdCreate size={25} />}
+            {isSave ? (
+              <IoIosSave size={25} onClick={uploadNameHandler} />
+            ) : (
+              <IoMdCreate size={25} />
+            )}
           </span>
         </div>
         <div className={style.info__item}>
-          <InfoCard fistText="消費次數" lastText={count ? count : 0} />
+          <InfoCard
+            fistText={t("text.numberConsumptions")}
+            lastText={count ? count : 0}
+          />
         </div>
         <div className={style.info__item}>
-          <InfoCard fistText="會員點數" lastText={point ? point : 0} />
+          <InfoCard fistText={t("text.point")} lastText={point ? point : 0} />
         </div>
       </div>
       <div className={style.spendingRecords_info}>
         {sortSpendingRecords ? (
           <div className={style.title}>
-            <SpendingRecordsCard time="消費日期" spend="會員點數" />
+            <SpendingRecordsCard
+              time={t("text.date")}
+              spend={t("text.point")}
+            />
           </div>
         ) : null}
 
@@ -104,7 +116,7 @@ function MemberInfo() {
             })}
           </div>
         ) : (
-          <div className={style.text}>還沒有消費紀錄</div>
+          <div className={style.text}>{t("text.consumption")}</div>
         )}
       </div>
     </div>

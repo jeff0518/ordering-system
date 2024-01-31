@@ -25,7 +25,13 @@
     "total": "Grand Total : {{cartTotal}}",
     "error": "Oops! An error occurred. Please return to the main page.",
     "login": "Log In",
-    "create": "Create new user"
+    "create": "Create new user",
+    "consumption": "There is no consumption record yet",
+    "point": "Member points",
+    "date": "Date of consumption",
+    "numberConsumptions": "Number of consumptions",
+    "name": "Name",
+    "phoneNumber": "Member phone number"
   },
   "button": {
     "addCart": "Add Cart",

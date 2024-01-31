@@ -25,7 +25,13 @@
     "total": "總金額 : {{cartTotal}}",
     "error": "抱歉！出現錯誤，請按下方按鈕回到主頁面",
     "login": "登入會員",
-    "create": "建立新會員"
+    "create": "建立新會員",
+    "consumption": "還沒有消費紀錄",
+    "point": "會員點數",
+    "date": "消費日期",
+    "numberConsumptions": "消費次數",
+    "name": "姓名",
+    "phoneNumber": "會員手機"
   },
   "button": {
     "addCart": "加入購物車",
