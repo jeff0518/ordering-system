@@ -21,6 +21,7 @@
   },
   "text": {
     "cart": "購物車",
+    "check": "帳單",
     "sure": "確定要送出以下餐點？",
     "total": "總金額 : {{cartTotal}}",
     "error": "抱歉！出現錯誤，請按下方按鈕回到主頁面",
@@ -31,7 +32,8 @@
     "date": "消費日期",
     "numberConsumptions": "消費次數",
     "name": "姓名",
-    "phoneNumber": "會員手機"
+    "phoneNumber": "會員手機",
+    "memberInfo": "會員資訊"
   },
   "button": {
     "addCart": "加入購物車",
@@ -42,7 +44,8 @@
     "return": "回到主頁面",
     "login": "登入會員",
     "create": "建立新會員",
-    "save": "儲存"
+    "save": "儲存",
+    "signOut": "登出"
   },
   "input": {
     "table": "桌號",

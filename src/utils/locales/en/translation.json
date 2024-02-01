@@ -21,6 +21,7 @@
   },
   "text": {
     "cart": "Shopping Cart",
+    "check": "Check",
     "sure": "Do you confirm that you want to send out the following meals?",
     "total": "Grand Total : {{cartTotal}}",
     "error": "Oops! An error occurred. Please return to the main page.",
@@ -31,7 +32,8 @@
     "date": "Date of consumption",
     "numberConsumptions": "Number of consumptions",
     "name": "Name",
-    "phoneNumber": "Member phone number"
+    "phoneNumber": "Member phone number",
+    "memberInfo": "Member information"
   },
   "button": {
     "addCart": "Add Cart",
@@ -42,7 +44,8 @@
     "return": "Return to the main page.",
     "login": "Log In",
     "create": "Create new user",
-    "save": "Save"
+    "save": "Save",
+    "signOut": "Sign Out"
   },
   "input": {
     "table": "Table",

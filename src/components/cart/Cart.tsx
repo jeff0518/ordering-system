@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import CartContext from "../../context/CartContext";
@@ -6,8 +6,10 @@ import UserProgressContext from "../../context/UserProgressContext.";
 import CartItem from "./CartItem";
 import ButtonUI from "../UI/ButtonUI";
 import Modal from "../UI/Modal";
+import TabButton from "./TabButton";
 
 function Cart() {
+  const [selectedTitle, setSelectedTitle] = useState<string>("cart");
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
   const { t } = useTranslation();
@@ -26,6 +28,10 @@ function Cart() {
     userProgressCtx.hideCart();
   }
 
+  function selectTitleHandler(select: string) {
+    setSelectedTitle(select);
+  }
+
   return (
     <Modal
       className="cart"
@@ -34,7 +40,21 @@ function Cart() {
         userProgressCtx.progress === "cart" ? closeCartHandler : () => {}
       }
     >
-      <h2>{t("text.cart")}</h2>
+      <menu>
+        <TabButton
+          isChecked={selectedTitle === "cart" ? true : false}
+          onClick={() => selectTitleHandler("cart")}
+        >
+          {t("text.cart")}
+        </TabButton>
+        <TabButton
+          isChecked={selectedTitle === "checkout" ? true : false}
+          onClick={() => setSelectedTitle("checkout")}
+        >
+          {t("text.check")}
+        </TabButton>
+      </menu>
+      <h2>{selectedTitle === "cart" ? t("text.cart") : t("text.check")}</h2>
       <ul>
         {cartCtx?.items.map((item) => (
           <CartItem

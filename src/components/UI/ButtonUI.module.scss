@@ -106,3 +106,35 @@
     color: color.$error-color;
   }
 }
+
+.btn__tab {
+  padding: 0.5rem 1rem;
+  border: 1px solid color.$gray-6;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  @include center-both;
+  @include text-styles(0.75rem, 500, color.$assistant-gray-color);
+
+  &:hover,
+  &:active {
+    transform: scale(1.1);
+    color: color.$secondary-color;
+  }
+}
+
+.btn__tab__checked {
+  padding: 0.5rem 1rem;
+  border: 1px solid color.$brand-color;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: color.$brand-color;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  @include center-both;
+  @include text-styles(1rem, 500, color.$assistant-gray-color);
+}
