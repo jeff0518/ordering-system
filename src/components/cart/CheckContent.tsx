@@ -1,12 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import CheckItem from "./CheckItem";
 import ButtonUI from "../UI/ButtonUI";
-import { getCart } from "../../services/tableAPI";
+// import { createNewSpending } from "../../services/memberAPI";
+import { getCart, getTheCheck } from "../../services/tableAPI";
 import { CartDataProps } from "../../utils/type";
-// import { Toast, Alert } from "../../utils/getSweetalert";
+import { Toast, Alert } from "../../utils/getSweetalert";
 import style from "./CheckContent.module.scss";
 
 interface CartContentProps {
@@ -14,8 +16,10 @@ interface CartContentProps {
 }
 
 function CheckContent({ closeCartHandler }: CartContentProps) {
+  const tableId = localStorage.getItem("tableId")!;
   const [checkData, setCheckData] = useState<CartDataProps>();
-  // const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const cartTotal = checkData?.shoppingCar.reduce(
@@ -24,30 +28,55 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
     0
   );
 
-  async function fetchTableData(tableId: string) {
-    console.log(tableId);
+  async function uploadHandler() {
     try {
-      const response = await getCart(tableId);
-      console.log("response: ", response);
+      await getTheCheck(tableId);
+      setCheckData(undefined);
+      Toast.fire({ icon: "success", title: `${t("messages.sent")}` });
+      localStorage.clear();
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      Alert.fire({
+        title: `${t(`messages.sever.${(error as Error).message}`)}`,
+        icon: "error",
+      });
     }
   }
 
-  useEffect(() => {
-    const tableId = localStorage.getItem("tableId")!;
+  async function fetchTableData(Id: string) {
+    try {
+      setIsLoading(true);
+      const response = await getCart(Id);
+      setCheckData(response.data.data);
+      setIsLoading(false);
+    } catch (error) {
+      Alert.fire({
+        title: `${t(`messages.sever.${(error as Error).message}`)}`,
+        icon: "error",
+      });
+      setIsLoading(false);
+    }
+  }
 
+  function checkHandler() {
+    uploadHandler();
+  }
+
+  useEffect(() => {
     if (tableId) {
       fetchTableData(tableId);
+    } else {
+      Alert.fire({
+        title: `${t("messages.again")}`,
+        icon: "error",
+      });
+      navigate("/");
     }
   }, []);
-
-  // function checkHandler() {
-  //   console.log("結帳");
-  // }
   return (
     <>
       <ul className={style.cartItemList}>
+        {isLoading && <div className={style.isLoading}>資料讀取中...</div>}
         {checkData?.shoppingCar.map((item) => (
           <CheckItem
             key={item.productId}
@@ -57,16 +86,16 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
           />
         ))}
       </ul>
-      <p className={style.cart_total}>$ {cartTotal}</p>
-      <div>
+      <p className={style.cart_total}>{cartTotal && "$ " + cartTotal}</p>
+      <div className={style.check_btn}>
         <ButtonUI btnStyle="btn__text" onClick={closeCartHandler}>
           {t("button.close")}
         </ButtonUI>
-        {/* {checkData.shoppingCar.length !== 0 && (
+        {checkData && checkData.shoppingCar && (
           <ButtonUI btnStyle="btn__cart" onClick={checkHandler}>
             {t("button.check")}
           </ButtonUI>
-        )} */}
+        )}
       </div>
     </>
   );

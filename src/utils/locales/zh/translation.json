@@ -61,7 +61,7 @@
     "phoneIncorrect": "您輸入的手機號碼有誤！",
     "alreadyOrder": "已經在 {{storedTableId}} 點過餐",
     "return": "回到 {{storedTableId}}",
-    "again": "重新輸入桌號",
+    "again": "請重新輸入桌號",
     "sent": "已送出!",
     "noCartData": "沒有購物車資料!",
     "member": {

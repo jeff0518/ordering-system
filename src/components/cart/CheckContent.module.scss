@@ -5,6 +5,13 @@
   list-style: none;
   margin: 0.5rem 0;
   padding: 0;
+
+  .isLoading {
+    display: block;
+    text-align: center;
+    margin-top: 5rem;
+    @include text-styles(1.25rem, 700, color.$gray-8);
+  }
 }
 
 .cart_total {
@@ -12,4 +19,8 @@
   justify-content: flex-end;
   margin: 2rem 0;
   @include text-styles(1.25rem, 700, color.$gray-8);
+}
+
+.check_btn {
+  position: relative;
 }

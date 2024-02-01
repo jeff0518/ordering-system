@@ -69,3 +69,33 @@ export async function patchCart(props: CartDataProps) {
     }
   }
 }
+
+export async function getTheCheck(tableId: string) {
+  try {
+    const response = await axios.patch(
+      `https://simple-order-system.vercel.app/api/main/${tableId}`,
+      {
+        tableId,
+      }
+    );
+
+    const data = response.data;
+    if (response.status >= 200 && response.status < 300) {
+      return data;
+    } else {
+      throw new Error(data.message || "rang");
+    }
+  } catch (error) {
+    if (
+      axios.isAxiosError(error) &&
+      error.response &&
+      error.response.data &&
+      error.response.data.error
+    ) {
+      const errorMessage = error.response.data.error;
+      throw new Error(`${errorMessage}`);
+    } else {
+      throw new Error("failed");
+    }
+  }
+}
