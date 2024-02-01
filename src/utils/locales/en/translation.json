@@ -45,7 +45,8 @@
     "login": "Log In",
     "create": "Create new user",
     "save": "Save",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "check": "Check"
   },
   "input": {
     "table": "Table",

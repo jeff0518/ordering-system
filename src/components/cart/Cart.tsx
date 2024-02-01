@@ -1,24 +1,16 @@
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import CartContext from "../../context/CartContext";
 import UserProgressContext from "../../context/UserProgressContext.";
-import CartItem from "./CartItem";
-import ButtonUI from "../UI/ButtonUI";
+import CartContent from "./CartContent";
+import CheckContent from "./CheckContent";
 import Modal from "../UI/Modal";
 import TabButton from "./TabButton";
 
 function Cart() {
   const [selectedTitle, setSelectedTitle] = useState<string>("cart");
-  const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
   const { t } = useTranslation();
-
-  const cartTotal = cartCtx?.items.reduce(
-    (totalPrice, item) =>
-      totalPrice + (item.quantity ? +item.quantity : 0) * +item.selling,
-    0
-  );
 
   function showSendOutHandler() {
     userProgressCtx.showSendOut();
@@ -55,29 +47,15 @@ function Cart() {
         </TabButton>
       </menu>
       <h2>{selectedTitle === "cart" ? t("text.cart") : t("text.check")}</h2>
-      <ul>
-        {cartCtx?.items.map((item) => (
-          <CartItem
-            key={item.productId}
-            name={item.name}
-            selling={item.selling}
-            quantity={item.quantity}
-            onAdd={() => cartCtx.addItem(item)}
-            onRemove={() => cartCtx.removeItem(item.productId)}
-          />
-        ))}
-      </ul>
-      <p className="cart_total">$ {cartTotal}</p>
-      <div className="modal_actions">
-        <ButtonUI btnStyle="btn__text" onClick={closeCartHandler}>
-          {t("button.close")}
-        </ButtonUI>
-        {cartCtx?.items.length !== 0 && (
-          <ButtonUI btnStyle="btn__cart" onClick={showSendOutHandler}>
-            {t("button.send")}
-          </ButtonUI>
-        )}
-      </div>
+
+      {selectedTitle === "cart" ? (
+        <CartContent
+          closeCartHandler={closeCartHandler}
+          showSendOutHandler={showSendOutHandler}
+        />
+      ) : (
+        <CheckContent closeCartHandler={closeCartHandler} />
+      )}
     </Modal>
   );
 }

@@ -1,0 +1,15 @@
+@use "/src/styles/colors" as color;
+@import "/src//styles/mixin";
+
+.cartItemList {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.cart_total {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem 0;
+  @include text-styles(1.25rem, 700, color.$gray-8);
+}

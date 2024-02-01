@@ -45,7 +45,8 @@
     "login": "登入會員",
     "create": "建立新會員",
     "save": "儲存",
-    "signOut": "登出"
+    "signOut": "登出",
+    "check": "結帳"
   },
   "input": {
     "table": "桌號",
