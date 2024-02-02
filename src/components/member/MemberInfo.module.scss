@@ -47,7 +47,8 @@
     border-top: 5px solid color.$gray-6;
 
     .title {
-      padding-right: 16px;
+      display: flex;
+      flex-direction: column;
     }
 
     .spendingBox {

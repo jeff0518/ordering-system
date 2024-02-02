@@ -4,6 +4,7 @@
 .spendingRecordsCard_container {
   width: 90%;
   margin: 0 auto;
+  padding: 0 5%;
   display: flex;
   gap: 0.5rem;
   @include text-styles(1rem, 500, color.$gray-10);
@@ -26,9 +27,10 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .spendingRecordsCard_container {
-    width: 60%;
+    width: 70%;
     gap: 2rem;
+    padding: 0;
   }
 }
