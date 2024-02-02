@@ -56,7 +56,7 @@ function MemberAuthForm() {
       });
       setIsLoading(false);
       localStorage.setItem("phoneId", `${phoneNumber}`);
-      navigate("/member/info");
+      navigate("/main");
     } catch (error) {
       Alert.fire({
         title: `${t(`messages.sever.${(error as Error).message}`)}`,
