@@ -1,10 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import CheckItem from "./CheckItem";
 import ButtonUI from "../UI/ButtonUI";
+import getSpendingId from "../../utils/getSpendingId";
 // import { createNewSpending } from "../../services/memberAPI";
 import { getCart, getTheCheck } from "../../services/tableAPI";
 import { CartDataProps } from "../../utils/type";
@@ -20,6 +20,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
   const [checkData, setCheckData] = useState<CartDataProps>();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
   const { t } = useTranslation();
 
   const cartTotal = checkData?.shoppingCar.reduce(
@@ -29,6 +30,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
   );
 
   async function uploadHandler() {
+    const { newDate, newTime } = getSpendingId();
     try {
       await getTheCheck(tableId);
       setCheckData(undefined);
@@ -72,6 +74,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
       });
       navigate("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
