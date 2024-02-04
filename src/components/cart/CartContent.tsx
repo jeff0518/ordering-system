@@ -27,7 +27,7 @@ function CartContent({
     <>
       <ul className={style.cartItemList}>
         {cartCtx?.items.length === 0 && (
-          <li className={style.cartItemList_error}>你還沒有把餐點放入購物車</li>
+          <li className={style.cartItemList_error}>{t("messages.ordered")}</li>
         )}
         {cartCtx?.items.map((item) => (
           <CartItem

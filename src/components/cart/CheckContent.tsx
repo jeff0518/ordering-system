@@ -99,7 +99,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
     <>
       <ul className={style.cartItemList}>
         {isLoading ? (
-          <div className={style.isLoading}>資料傳輸中...</div>
+          <div className={style.isLoading}>{t("messages.transfer")}</div>
         ) : (
           <>
             {checkData && checkData.shoppingCar.length > 0 ? (
@@ -112,7 +112,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
                 />
               ))
             ) : (
-              <div className={style.isLoading}>帳單是空的</div>
+              <div className={style.isLoading}>{t("messages.empty")}</div>
             )}
           </>
         )}

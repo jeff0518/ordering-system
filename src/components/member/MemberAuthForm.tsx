@@ -30,6 +30,7 @@ function MemberAuthForm() {
           icon: "success",
           title: `${t(`messages.member.${response.data.message}`)}`,
         });
+        await loginHandler(phoneNumber);
       } else if (response.status === 202) {
         Toast.fire({
           icon: "warning",
@@ -77,7 +78,6 @@ function MemberAuthForm() {
     const formattedPhoneNumber = phoneNumber
       ? phoneNumber.toString().trim()
       : "";
-
     if (formattedPhoneNumber.length === 10) {
       if (isLogin) {
         loginHandler(formattedPhoneNumber);
