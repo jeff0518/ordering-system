@@ -1,4 +1,4 @@
-import { FormEvent, useState, useContext } from "react";
+import { FormEvent, useState, useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import InputUI from "../UI/InputUI";
 import ButtonUI from "../UI/ButtonUI";
 import Loading from "../error/Loading";
 import MemberContext from "../../context/MemberContext";
+import { useCheckLoginStatus } from "../../utils/checkLoginStatus";
 import { createMember, getMember } from "../../services/memberAPI";
 import { Alert, Toast } from "../../utils/getSweetalert";
 import style from "./MemberAuthForm.module.scss";
@@ -16,6 +17,7 @@ function MemberAuthForm() {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const checkLogin = useCheckLoginStatus();
   const { t } = useTranslation();
 
   async function createMemberHandler(phoneNumber: string) {
@@ -94,6 +96,12 @@ function MemberAuthForm() {
   function switchAuthHandler() {
     setIsLogin((prev) => !prev);
   }
+
+  useEffect(() => {
+    if (!checkLogin) {
+      navigate("/");
+    }
+  }, [checkLogin, navigate]);
   return (
     <Form className="member" onSubmit={onSubmitHandler}>
       {isLoading && <Loading />}
