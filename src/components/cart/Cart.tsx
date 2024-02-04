@@ -17,6 +17,7 @@ function Cart() {
   }
 
   function closeCartHandler() {
+    setSelectedTitle("cart");
     userProgressCtx.hideCart();
   }
 

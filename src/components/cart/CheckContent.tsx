@@ -30,6 +30,10 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
     0
   );
 
+  function deleteCheckData() {
+    setCheckData(undefined);
+  }
+
   async function uploadHandler() {
     const { newDate, newTime } = getSpendingId();
     const newPoint = cartTotal!.toString();
@@ -38,8 +42,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
     try {
       setIsLoading(true);
       await getTheCheck(tableId);
-
-      setCheckData(undefined);
+      deleteCheckData();
       Alert.fire({ icon: "success", title: `${t("messages.checked")}` });
       localStorage.clear();
 
@@ -99,14 +102,18 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
           <div className={style.isLoading}>資料傳輸中...</div>
         ) : (
           <>
-            {checkData?.shoppingCar.map((item) => (
-              <CheckItem
-                key={item.productId}
-                name={item.name}
-                selling={item.selling}
-                quantity={item.quantity}
-              />
-            ))}
+            {checkData && checkData.shoppingCar.length > 0 ? (
+              checkData?.shoppingCar.map((item) => (
+                <CheckItem
+                  key={item.productId}
+                  name={item.name}
+                  selling={item.selling}
+                  quantity={item.quantity}
+                />
+              ))
+            ) : (
+              <div className={style.isLoading}>帳單是空的</div>
+            )}
           </>
         )}
       </ul>
@@ -115,7 +122,7 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
         <ButtonUI btnStyle="btn__text" onClick={closeCartHandler}>
           {t("button.close")}
         </ButtonUI>
-        {checkData && checkData.shoppingCar && (
+        {checkData && checkData.shoppingCar.length > 0 && (
           <ButtonUI btnStyle="btn__cart" onClick={checkHandler}>
             {t("button.check")}
           </ButtonUI>
