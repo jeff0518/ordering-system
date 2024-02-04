@@ -42,8 +42,8 @@ function MemberInfo() {
     const dateComparison = dateA.getTime() - dateB.getTime();
 
     if (dateComparison === 0) {
-      const idA = parseInt(a.spendingId.split("-")[2]);
-      const idB = parseInt(b.spendingId.split("-")[2]);
+      const idA = parseInt(a.spendingId.split("/")[2]);
+      const idB = parseInt(b.spendingId.split("/")[2]);
       return idA - idB;
     }
 
