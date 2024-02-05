@@ -41,6 +41,7 @@ function CheckContent({
     const newPoint = cartTotal!.toString();
     const newSpendingId = newDate + newTime;
     const phoneNumber = localStorage.getItem("phoneId");
+    setIsLoading(true);
     try {
       await getTheCheck(tableId);
       if (phoneNumber) {
@@ -50,6 +51,7 @@ function CheckContent({
           newPoint,
           newSpendingId,
         });
+
         memberCtx?.clearMember();
       }
       setCheckData(undefined);
@@ -94,6 +96,7 @@ function CheckContent({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       <ul className={style.cartItemList}>
