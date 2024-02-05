@@ -41,7 +41,7 @@ function CartContent({
         ))}
       </ul>
       <p className={style.cart_total}>$ {cartTotal}</p>
-      <div>
+      <div className={style.cart_div}>
         <ButtonUI btnStyle="btn__text" onClick={closeCartHandler}>
           {t("button.close")}
         </ButtonUI>

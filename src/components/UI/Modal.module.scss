@@ -36,11 +36,11 @@
     @include text-styles(1.25rem, 700, color.$gray-8);
   }
 
-  div {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
+  // div {
+  //   display: flex;
+  //   justify-content: flex-end;
+  //   gap: 1rem;
+  // }
 }
 
 .sendOut {

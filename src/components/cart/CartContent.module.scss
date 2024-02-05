@@ -20,3 +20,9 @@
   margin: 2rem 0;
   @include text-styles(1.25rem, 700, color.$gray-8);
 }
+
+.cart_div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

@@ -13,13 +13,19 @@ import { Alert } from "../../utils/getSweetalert";
 import style from "./CheckContent.module.scss";
 
 interface CartContentProps {
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
   closeCartHandler: () => void;
 }
 
-function CheckContent({ closeCartHandler }: CartContentProps) {
+function CheckContent({
+  closeCartHandler,
+  isLoading,
+  setIsLoading,
+}: CartContentProps) {
   const tableId = localStorage.getItem("tableId")!;
   const [checkData, setCheckData] = useState<CartDataProps>();
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const memberCtx = useContext(MemberContext);
   const { t } = useTranslation();
@@ -30,22 +36,13 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
     0
   );
 
-  function deleteCheckData() {
-    setCheckData(undefined);
-  }
-
   async function uploadHandler() {
     const { newDate, newTime } = getSpendingId();
     const newPoint = cartTotal!.toString();
     const newSpendingId = newDate + newTime;
     const phoneNumber = localStorage.getItem("phoneId");
     try {
-      setIsLoading(true);
       await getTheCheck(tableId);
-      deleteCheckData();
-      Alert.fire({ icon: "success", title: `${t("messages.checked")}` });
-      localStorage.clear();
-
       if (phoneNumber) {
         await createNewSpending({
           phoneNumber,
@@ -55,7 +52,9 @@ function CheckContent({ closeCartHandler }: CartContentProps) {
         });
         memberCtx?.clearMember();
       }
+      setCheckData(undefined);
       navigate("/");
+      localStorage.clear();
     } catch (error) {
       Alert.fire({
         title: `${t(`messages.sever.${(error as Error).message}`)}`,
