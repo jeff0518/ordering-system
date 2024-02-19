@@ -13,6 +13,12 @@ interface ModalProps {
 function Modal({ children, open, className = " ", onClose }: ModalProps) {
   const dialog = useRef<HTMLDialogElement | null>(null);
 
+  function backdropClickHandle(event: React.MouseEvent<HTMLDialogElement>) {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  }
+
   useEffect(() => {
     const modal = dialog.current;
     if (!modal) return;
@@ -29,6 +35,7 @@ function Modal({ children, open, className = " ", onClose }: ModalProps) {
       ref={dialog}
       className={`${style.modal} ${style[className]}`}
       onClose={onClose}
+      onClick={backdropClickHandle}
     >
       {children}
     </dialog>,

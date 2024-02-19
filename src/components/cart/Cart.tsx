@@ -41,35 +41,36 @@ function Cart() {
           <Loading />
         </h3>
       )}
+      <div>
+        <menu>
+          <TabButton
+            isChecked={selectedTitle === "cart" ? true : false}
+            onClick={() => selectTitleHandler("cart")}
+          >
+            {t("text.cart")}
+          </TabButton>
+          <TabButton
+            isChecked={selectedTitle === "checkout" ? true : false}
+            onClick={() => setSelectedTitle("checkout")}
+          >
+            {t("text.check")}
+          </TabButton>
+        </menu>
+        <h2>{selectedTitle === "cart" ? t("text.cart") : t("text.check")}</h2>
 
-      <menu>
-        <TabButton
-          isChecked={selectedTitle === "cart" ? true : false}
-          onClick={() => selectTitleHandler("cart")}
-        >
-          {t("text.cart")}
-        </TabButton>
-        <TabButton
-          isChecked={selectedTitle === "checkout" ? true : false}
-          onClick={() => setSelectedTitle("checkout")}
-        >
-          {t("text.check")}
-        </TabButton>
-      </menu>
-      <h2>{selectedTitle === "cart" ? t("text.cart") : t("text.check")}</h2>
-
-      {selectedTitle === "cart" ? (
-        <CartContent
-          closeCartHandler={closeCartHandler}
-          showSendOutHandler={showSendOutHandler}
-        />
-      ) : (
-        <CheckContent
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          closeCartHandler={closeCartHandler}
-        />
-      )}
+        {selectedTitle === "cart" ? (
+          <CartContent
+            closeCartHandler={closeCartHandler}
+            showSendOutHandler={showSendOutHandler}
+          />
+        ) : (
+          <CheckContent
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            closeCartHandler={closeCartHandler}
+          />
+        )}
+      </div>
     </Modal>
   );
 }
